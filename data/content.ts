@@ -223,7 +223,7 @@ High School Diploma
 
 **Activities and societies:** Academic Decathlon, Computer Science Club, Asian Student Association
 
-**Relevant coursework:** AP Calculus BC, AP English Literature and Composition, AP Environmental Science, AP Macroeconomics, AP Statistics, AP US Government, AP Art History, AP English Language and Composition, AP Physics 1, AP US History AP Computer Science A, AP Seminar, AP World History, AP Computer Science Principles, AP Human Geography`,
+**Relevant coursework:** AP Calculus BC, AP English Literature and Composition, AP Environmental Science, AP Macroeconomics, AP Statistics, AP US Government, AP Art History, AP English Language and Composition, AP Physics 1, AP US History, AP Computer Science A, AP Seminar, AP World History, AP Computer Science Principles, AP Human Geography`,
   },
 
   // ── Misc ──────────────────────────────────────────────────
