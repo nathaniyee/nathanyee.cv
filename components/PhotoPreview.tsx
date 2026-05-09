@@ -9,14 +9,15 @@ interface PhotoPreviewProps {
 }
 
 export default function PhotoPreview({ onClose }: PhotoPreviewProps) {
-  const [pos, setPos] = useState(() => ({
-    x: window.innerWidth * 0.25 - 140,
-    y: window.innerHeight * 0.5 - 158,
-  }));
+  const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
   const dragging = useRef(false);
   const dragOffset = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
+    setPos({
+      x: window.innerWidth * 0.25 - 140,
+      y: window.innerHeight * 0.5 - 158,
+    });
     const onMove = (e: MouseEvent) => {
       if (!dragging.current) return;
       setPos({
@@ -34,9 +35,12 @@ export default function PhotoPreview({ onClose }: PhotoPreviewProps) {
   }, []);
 
   const onTitleMouseDown = (e: React.MouseEvent) => {
+    if (!pos) return;
     dragging.current = true;
     dragOffset.current = { x: e.clientX - pos.x, y: e.clientY - pos.y };
   };
+
+  if (!pos) return null;
 
   return (
     <div
