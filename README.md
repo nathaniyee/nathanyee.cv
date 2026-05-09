@@ -1,4 +1,4 @@
-# nathanyee.cv
+# Nathan Yee's Personal Portfolio
 
 Personal portfolio and interactive terminal — built with Next.js.
 
