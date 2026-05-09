@@ -17,7 +17,7 @@ export const siteConfig = {
     leetcode: "https://leetcode.com/u/nathanyee/",
   },
   email: "nathanyee99@gmail.com",
-  resume: "/placeholder.pdf",
+  resume: "/resume.pdf",
 } as const;
 
 // ============================================================

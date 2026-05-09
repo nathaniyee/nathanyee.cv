@@ -87,7 +87,7 @@ export default function PhotoPreview({ onClose }: PhotoPreviewProps) {
       {/* ── Image ── */}
       <div style={{ background: "#1A1A1A" }}>
         <Image
-          src="/images/profile.JPG"
+          src="/images/profile.jpg"
           alt={siteConfig.name}
           width={280}
           height={280}
