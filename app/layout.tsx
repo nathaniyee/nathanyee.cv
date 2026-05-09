@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nolan Yee",
+  title: "Nathan Yee",
   description: "Personal portfolio site",
 };
 

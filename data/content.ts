@@ -3,49 +3,26 @@
 // ============================================================
 
 export const siteConfig = {
-  name: "Nolan Yee",
-  tagline: "CS @ UT Austin · Forty Acres Scholar",
+  name: "Nathan Yee",
+  tagline: "Software Engineer Intern @ Apple · CS @ UT Austin",
   bio: [
-    "I'm a CS student at UT Austin building full-stack applications and AI-powered tools. Since I started college, I've prioritized learning to develop software that solves real problems for people.",
-    "Feel free to explore this website, or reach out if you want to build something together.",
+    "I am a Computer Science student at the University of Texas at Austin, with deep interests in full-stack software engineering, data systems, and automotive technology.",
+    "Feel free to explore this website, or reach out if you want to connect!",
   ],
-  terminalUser: "nolan",
-  terminalDomain: "nolanyee.dev",
+  terminalUser: "nathan",
+  terminalDomain: "nathanyee.cv",
   social: {
-    github: "https://github.com/nolanqyee",
-    linkedin: "https://linkedin.com/in/nolanqyee",
+    github: "https://github.com/nathaniyee",
+    linkedin: "https://linkedin.com/in/nathaniyee",
+    leetcode: "https://leetcode.com/u/nathanyee/",
   },
-  email: "nolanyee@utexas.edu",
-  resume: "/resume.pdf",
+  email: "nathanyee99@gmail.com",
+  resume: "/placeholder.pdf",
 } as const;
 
 // ============================================================
 // CONTENT MODEL
 // ============================================================
-
-export type RenderType = "text" | "markdown" | "visual";
-export type VisualVariant = "project" | "experience" | "media";
-
-export interface VisualProps {
-  variant: VisualVariant;
-  imageUrl?: string;
-  liveUrl?: string;
-  repoUrl?: string;
-  tags?: string[];
-  // Experience
-  company?: string;
-  role?: string;
-  period?: string;
-  // Media
-  thumbnailUrl?: string;
-  platform?: "spotify" | "youtube" | "other";
-}
-
-export interface ContentMeta {
-  category: string;
-  date?: string;
-  tags?: string[];
-}
 
 export interface ContentNode {
   id: string;
@@ -54,12 +31,7 @@ export interface ContentNode {
   /** One-line summary used in `ls` output and portfolio lists */
   short: string;
   body: string;
-  renderType: RenderType;
-  visualProps?: VisualProps;
   externalUrl?: string;
-  meta: ContentMeta;
-  /** If true, this node appears in the portfolio website view */
-  pinned?: boolean;
 }
 
 // ============================================================
@@ -73,19 +45,17 @@ const CONTENT: ContentNode[] = [
     path: "/welcome.md",
     title: "Welcome",
     short: "Start here",
-    body: `# Hi, I'm Nolan.
+    body: `# Hi, I'm Nathan.
 
 Type \`ls\` to explore, \`cat <file>\` to read, or \`help\` for a full command list.
 
 **Quick start:**
-- \`ls /projects\` — things I've built
 - \`ls /experience\` — where I've worked
-- \`ls /research\` — papers and research
+- \`ls /projects\` — things I've built
+- \`ls /education\` — what I've studied
 - \`ls /misc\` — everything else
-- \`photo\` — what I look like
-- \`cat bio.md\` — a quick bio about me`,
-    renderType: "markdown",
-    meta: { category: "root" },
+- \`photo\` — mog?
+- \`cat bio.md\` — a quick introduction`,
   },
   {
     id: "bio.md",
@@ -94,271 +64,213 @@ Type \`ls\` to explore, \`cat <file>\` to read, or \`help\` for a full command l
     short: "About me",
     body: `# About Me
 
-**Nolan Yee** — Austin, TX
+Hello! I'm Nathan Yee, a Computer Science student at the University of Texas at Austin and a Software Engineer Intern at Apple.
 
-CS student at UT Austin and Forty Acres Scholar (1 of 20 from 90,000+ applicants). I build full-stack applications, AI tools, and the occasional neural network. Currently founding my startup, Bubble, leading engineering at TPEO, and doing research on AI in human fields.
+I enjoy building full-stack applications and data-driven tools, especially in environments where software interacts with real-world systems. On campus, I am involved with Longhorn Racing, UT's Formula Student team, where I write software for and conduct tests for our FSAE race car.
 
-When I'm not coding, I'm writing songs, playing guitar and piano, or grinding competitive Pokémon.
-
-**Education:** B.S. Computer Science, The University of Texas at Austin (Expected 2028)
-
-**Contact:** nolanyee@utexas.edu · https://linkedin.com/in/nolanqyee · https://github.com/nolanqyee`,
-    renderType: "markdown",
-    meta: { category: "root", tags: ["bio"] },
+When I'm not coding, I enjoy traveling with friends and family, playing competitive trivia games, or cheering for my favorite sports teams.`,
   },
 
   // ── Experience ────────────────────────────────────────────
   {
-    id: "experience/bubble.md",
-    path: "/experience/bubble.md",
-    title: "Bubble",
-    short: "Founded a prompt-first CRM with an LLM action agent and Redis-cached contact layer",
-    body: `# Bubble
-  Founding Engineer · October 2025 – Present
-  
-  Built Bubble — a prompt-first CRM that translates natural-language input into structured networking workflows — implementing an LLM action agent with 95% CRUD accuracy and a Redis-cached contact layer that cut query latency by 45%.
-  
-  https://bubbleai.framer.website/`,
-    renderType: "markdown",
-    pinned: true,
-    meta: { category: "experience", date: "2025-10", tags: ["startup", "ai", "engineering"] },
+    id: "experience/apple.md",
+    path: "/experience/apple.md",
+    title: "Apple",
+    short: "Software Engineer Intern for Apple Newsroom",
+    body: `# Apple
+Software Engineer Intern · May 2026 – Present
+
+Building full-stack internal web tools for Apple Newsroom using React and Spring Boot, contributing across frontend and backend systems for internal publishing and platform workflows.`,
   },
   {
-    id: "experience/tpeo.md",
-    path: "/experience/tpeo.md",
-    title: "Texas Product Engineering Organization",
-    short: "Created Via, a UT campus navigation tool, and currently lead our Engineering curriculum",
-    body: `# Texas Product Engineering Organization
-Engineering Lead · September 2025 – Present
+    id: "experience/foreflight.md",
+    path: "/experience/foreflight.md",
+    title: "ForeFlight",
+    short: "Software Engineer Intern for ForeFlight Web",
+    body: `# ForeFlight
+Software Engineer Intern · May 2025 – August 2025
 
-Selected as 1 of 10 from 250+ applicants, I lead engineering curriculum for TPEO fellows and built Via — a UT campus navigation app with a PostGIS spatial engine (sub-200ms queries) and a ranking algorithm using temporal decay and social voting.
+Developed production full-stack React features for ForeFlight Web, shipping a browser-based Checklist platform with dynamic rendering, editable workflows, and responsive mobile parity used by thousands of active pilots daily.
 
-https://github.com/via-team/frontend`,
-    renderType: "markdown",
-    pinned: true,
-    meta: { category: "experience", date: "2025-09", tags: ["leadership", "engineering"] },
+https://foreflight.com/products/checklist/`,
   },
   {
-    id: "experience/convergent.md",
-    path: "/experience/convergent.md",
-    title: "Texas Convergent",
-    short: "Built Vibecheck, a social media and collaboration app for musicians",
-    body: `# Texas Convergent
-Software Engineer · September 2025 – January 2026
+    id: "experience/longhornracing.md",
+    path: "/experience/longhornracing.md",
+    title: "Longhorn Racing",
+    short: "Software & Test Engineer for Longhorn Racing Electric",
+    body: `# Longhorn Racing
+Software & Test Engineer · September 2024 – Present
 
-Built Vibecheck, a cross-platform music collaboration app, optimizing feed performance by 40% via infinite-scroll, handling 300+ media uploads through Firebase, and shipping core messaging and workspace features across 12 Agile sprints.
+Developing telemetry, lap timing, and vehicle testing infrastructure for UT Austin's Formula SAE electric race car — building React/Firebase tooling that reduced manual logging time by 80% while supporting trackside analytics and vehicle dynamics testing.
 
-https://github.com/swarit-1/dam-music`,
-    renderType: "markdown",
-    pinned: true,
-    meta: { category: "experience", date: "2025-09", tags: ["engineering", "mobile"] },
+https://driveday.lhre.org/`,
   },
   {
-    id: "experience/echowellness.md",
-    path: "/experience/echowellness.md",
-    title: "EchoWellness",
-    short: "Built a full-stack fundraising website and led the organization as president",
-    body: `# EchoWellness
-President & Lead Web Developer · June 2023 – April 2025
+    id: "experience/phenom.md",
+    path: "/experience/phenom.md",
+    title: "Phenom",
+    short: "Software Engineer Intern for Phenom Infrastructure",
+    body: `# Phenom
+Software Engineer Intern · August 2024 – December 2024
 
-Built EchoWellness's full-stack fundraising platform using React and PHP, automating outreach for 150+ users, raising $10,000+, and increasing donor outreach by 30% and site traffic by 120%.
+Improved frontend architecture and platform performance for Phenom's athlete management system using React and Sharetribe, increasing user sign-ups by 37%, reducing server error rates by 95%, and improving mobile Lighthouse scores by 56%.
 
-https://theechowellness.org/`,
-    renderType: "markdown",
-    pinned: true,
-    meta: { category: "experience", date: "2023-06", tags: ["nonprofit", "fullstack", "leadership"] },
+https://www.allphenom.com/`,
   },
+  {
+    id: "experience/fri.md",
+    path: "/experience/fri.md",
+    title: "Freshman Research Initiative",
+    short: "Undergraduate Researcher",
+    body: `# Freshman Research Initiative
+Undergraduate Researcher · January 2024 – May 2024
+
+Conducted computational materials research at UT Austin using Python-based optimization and atomic-scale modeling techniques to simulate catalytic materials, implement gradient-descent methodologies, and analyze high-dimensional scientific systems.`,
+  },
+
+
+
 
   // ── Projects ──────────────────────────────────────────────
   {
-    id: "projects/gamification.md",
-    path: "/projects/gamification.md",
-    title: "Gamified Productivity Tracker",
-    short: "Full-stack productivity app built around a motivating point system",
-    body: `# Gamification
-**Stack:** Next.js, TypeScript, Tailwind CSS, shadcn/ui, Zustand, Recharts, Supabase
+    id: "projects/drive-day-log.md",
+    path: "/projects/drive-day-log.md",
+    title: "Drive Day Log",
+    short: "Vehicle telemetry and testing platform for Formula SAE track sessions",
+    body: `# Drive Day Log
+**Stack:** React, TypeScript, Firebase, Firestore
 
-A full-stack productivity app built around a personal points system — every productive action gets a value, creating the same motivational pull as leveling up in a video game, applied to real life.
+A vehicle testing and telemetry logging platform built for Longhorn Racing Electric to streamline lap timing, penalty tracking, session management, and multi-device data collection during Formula SAE testing sessions.
 
-https://github.com/nolanqyee/Gamification`,
-    renderType: "markdown",
-    externalUrl: "https://github.com/nolanqyee/Gamification",
-    pinned: true,
-    meta: { category: "projects", tags: ["fullstack", "productivity"] },
+https://github.com/LonghornRacingElectric/drive-day-log`,
   },
   {
-    id: "projects/image-manipulator.md",
-    path: "/projects/image-manipulator.md",
-    title: "Java Image Manipulator",
-    short: "Photoshop clone built in Spring",
-    body: `# Image Manipulator
-**Stack:** Java, Spring, Maven
+    id: "projects/sentinel.md",
+    path: "/projects/sentinel.md",
+    title: "Sentinel",
+    short: "AI-powered 911 operator triage and incident prioritization system",
+    body: `# Sentinel
+**Stack:** React, TypeScript, Next.js, FastAPI, Supabase, Gemini API, Twilio
 
-A Spring-based image processing engine supporting 4,000×4,000px edits, multi-format exports, and chroma-key compositing for seamless background replacement — optimized pixel-level routines cut average operation time by 35%.`,
-    renderType: "markdown",
-    pinned: true,
-    meta: { category: "projects", tags: ["java", "systems"] },
+Built at the Texas Momentum x Genesis x Yconic Build-a-thon, placing 2nd out of 100+ teams and winning $3,000 — an AI-powered triage tool for 911 operators that aggregates live distress calls, classifies incidents using Gemini-driven LLM pipelines, and surfaces escalation priorities through embedding similarity clustering.
+
+https://github.com/nathaniyee/sentinel`,
   },
   {
-    id: "projects/genre-classifier.md",
-    path: "/projects/genre-classifier.md",
-    title: "Music Genre Classification Neural Network",
-    short: "Classifies song genres from audio features with 72.4% accuracy",
-    body: `# Music Genre Classifier
-**Stack:** PyTorch, Python, NumPy, Pandas, Scikit-learn
+    id: "projects/nba-predictor.md",
+    path: "/projects/nba-predictor.md",
+    title: "NBA Matchup Predictor",
+    short: "Machine learning pipeline for predicting NBA game outcomes",
+    body: `# NBA Matchup Predictor
+**Stack:** Python, Playwright, scikit-learn
 
-A neural network classifying song genres from audio features with 72.4% accuracy across 1,000+ samples, with a Scikit-learn preprocessing pipeline and architecture tuned via GridSearchCV with ReLU, Batch Normalization, and Dropout.
+A machine learning pipeline that scrapes and processes thousands of NBA box scores to generate predictive matchup models using custom feature engineering and statistical regression techniques.
 
-https://github.com/nolanqyee/Genre-Classifier`,
-    renderType: "markdown",
-    externalUrl: "https://github.com/nolanqyee/Genre-Classifier",
-    pinned: true,
-    meta: { category: "projects", tags: ["ml", "python"] },
+https://github.com/nathaniyee/nba-ml-predictor`,
   },
   {
-    id: "projects/se-lab.md",
-    path: "/projects/se-lab.md",
-    title: "ARM System Emulator",
-    short: "Full software emulation of an ARM processor and cache",
-    body: `# ARM System Emulator
-**Stack:** C, ARM Assembly
+    id: "projects/pintos.md",
+    path: "/projects/pintos.md",
+    title: "Pintos",
+    short: "Unix-like operating system with virtual memory and file system support",
+    body: `# Pintos
+**Stack:** C, x86 Assembly
 
-A full software emulation of an ARM processor written in C — supporting ARM assembly instructions with a complete pipeline, hazard detection and forwarding units, branch handling, stall logic, and an L1 cache.`,
-    renderType: "markdown",
-    pinned: true,
-    meta: { category: "projects", tags: ["systems", "architecture"] },
+A Unix-like operating system project implementing multithreading, synchronization primitives, virtual memory, demand paging, and file system extensions in the Pintos instructional OS.`,
   },
   {
-    id: "projects/studytrackr.md",
-    path: "/projects/studytrackr.md",
-    title: "StudyTrackr",
-    short: "React productivity suite with real-time time tracking and progress dashboards",
-    body: `# StudyTrackr
-**Stack:** React, JavaScript, LocalStorage
+    id: "projects/shindig.md",
+    path: "/projects/shindig.md",
+    title: "Shindig",
+    short: "Location-based social discovery app for personalized event exploration",
+    body: `# Shindig
+**Stack:** React Native, JavaScript, Firebase, Firestore
 
-A React productivity suite with real-time time tracking and progress dashboards for 50+ active users — built with hooks and LocalStorage for state persistence, with a 78% increase in task completion after UX iteration.
+A location-based social discovery app built to help users find personalized events and activities through swipe-driven exploration, real-time data synchronization, and geolocation-powered recommendations.
 
-https://nolanqyee.github.io/studytrackr/`,
-    renderType: "markdown",
-    externalUrl: "https://nolanqyee.github.io/studytrackr/",
-    pinned: false,
-    meta: { category: "projects", tags: ["web"] },
+https://github.com/nathaniyee/shindig`,
   },
 
   // ── Education ─────────────────────────────────────────────
   {
     id: "education/ut-austin.md",
     path: "/education/ut-austin.md",
-    title: "B.S. Computer Science",
-    short: "The University of Texas at Austin · Forty Acres Scholar · Expected 2028",
+    title: "The University of Texas at Austin",
+    short: "Bachelor of Science in Computer Science",
     body: `# The University of Texas at Austin
-B.S. Computer Science · Expected May 2028
+    
+Bachelor of Science in Computer Science
+Minor in Business
+Minor in Statistics & Data Science
 
-Forty Acres Scholar — selected as 1 of 20 recipients (from 90,000+ applicants) of UT Austin's premier full-ride, merit-based scholarship.
+**Expected graduation:** May 2027
 
-**Relevant coursework:** Data Structures, Computer Architecture, Statistics, Computational Biology, Discrete Math, Calculus I–III
+**Activities and societies:** Longhorn Racing, Phi Chi Theta, Texas Momentum, Texas Convergent
 
-**Activities:** Texas Product Engineering Organization (Engineering Lead), Freshmen Research Initiative
-
-**Honors:** National Merit Scholarship Winner (top 0.5%) · 4× AIME Qualifier (top 2.5%) · USA Computing Olympiad Gold (top 7.5%)`,
-    renderType: "markdown",
-    meta: { category: "education", date: "2023-08" },
-  },
-
-  // ── Research ──────────────────────────────────────────────
-  {
-    id: "research/ai-music-paper.md",
-    path: "/research/ai-music-paper.md",
-    title: "AI Music & Emotional Impact",
-    short: "Studied how knowing a song is AI-generated changes its emotional impact",
-    body: `# Independent Research
-Independent Researcher
-
-Studied how listener awareness of AI authorship changes the emotional impact of music — comparing responses across groups who knew and didn't know whether what they were hearing was made by an AI or a human.
-
-https://docs.google.com/document/d/1JH1LayCb9H9Wy-j0yTq0vY8CB2bBi2iUsPyFAsX0RvQ/edit?usp=sharing`,
-    renderType: "markdown",
-    externalUrl: "https://docs.google.com/document/d/1JH1LayCb9H9Wy-j0yTq0vY8CB2bBi2iUsPyFAsX0RvQ/edit?usp=sharing",
-    pinned: true,
-    meta: { category: "research", tags: ["ai", "music", "research"] },
+**Relevant coursework:** Algorithms, Operating Systems, Computer Architecture, Data Structures, Software Engineering, Machine Learning, Data Management, Linear Algebra, Differential Equations, Statistics, Discrete Math, Calculus I-III`,
   },
   {
-    id: "research/machine-penalty.md",
-    path: "/research/machine-penalty.md",
-    title: "The Machine Penalty",
-    short: "Contributed to Dr. Daniel Shank's published book on how humans judge AI",
-    body: `# Missouri University of Science and Technology
-Research Intern · Dr. Daniel Shank · May 2024 – November 2024
+    id: "education/taylor.md",
+    path: "/education/taylor.md",
+    title: "James E. Taylor High School",
+    short: "High School Diploma",
+    body: `# James E. Taylor High School
+    
+High School Diploma
 
-Contributed to Dr. Shank's published book on AI perception by synthesizing 30+ HCI sources, analyzing 200+ LLM and GAN outputs with NumPy, Pandas, and Matplotlib, and automating significance testing for 2,500+ datapoints — cutting prep time by 60%.
+**Graduated:** May 2023
 
-https://link.springer.com/book/10.1007/978-3-031-86061-4`,
-    renderType: "markdown",
-    externalUrl: "https://link.springer.com/book/10.1007/978-3-031-86061-4",
-    pinned: true,
-    meta: { category: "research", date: "2024-05", tags: ["ai", "hci", "research"] },
-  },
-  {
-    id: "research/fri.md",
-    path: "/research/fri.md",
-    title: "Freshmen Research Initiative, EvoDevOmics Stream",
-    short: "Used ML and RNA sequencing to study gene expression in frogs and immortal jellyfish",
-    body: `# The University of Texas at Austin
-Research Fellow · Dr. Joseph Dubie · Freshmen Research Initiative
+**Activities and societies:** Academic Decathlon, Computer Science Club, Asian Student Association
 
-Processed RNA sequencing data and ran ML models to identify the genetic basis of frog midbrain development and the reverse-aging mechanisms of the immortal jellyfish — building pipelines to clean and analyze raw genomic output.`,
-    renderType: "markdown",
-    pinned: true,
-    meta: { category: "research", date: "2023-09", tags: ["biology", "ml", "research"] },
+**Relevant coursework:** AP Calculus BC, AP English Literature and Composition, AP Environmental Science, AP Macroeconomics, AP Statistics, AP US Government, AP Art History, AP English Language and Composition, AP Physics 1, AP US History AP Computer Science A, AP Seminar, AP World History, AP Computer Science Principles, AP Human Geography`,
   },
 
-  // ── Misc / Media ──────────────────────────────────────────
+  // ── Misc ──────────────────────────────────────────────────
   {
-    id: "misc/spotify.md",
-    path: "/misc/spotify.md",
-    title: "Singer-Songwriter",
-    short: "Original indie pop/folk pop, published 5 songs",
-    body: `# Singer-Songwriter
+    id: "misc/sports.md",
+    path: "/misc/sports.md",
+    title: "Depressed Sports Fan",
+    short: "Rockets, Texans, Longhorns, Chelsea FC, McLaren F1",
+    body: `# Depressed Sports Fan
 
-Indie pop / singer-songwriter — often very sad. Built around fingerpicked guitar or piano, with lyrics that try to say something honest. The hope is that someone hears one of my songs and feels a little less alone.
-
-https://open.spotify.com/artist/6zkX3EAZywzPDRSLR4gmLw?si=YDM_9aOaQQmWEg5xBmzSKw`,
-    renderType: "markdown",
-    externalUrl: "https://open.spotify.com/artist/6zkX3EAZywzPDRSLR4gmLw?si=YDM_9aOaQQmWEg5xBmzSKw",
-    pinned: true,
-    meta: { category: "misc", tags: ["music", "creative"] },
+I'm a huge sports fan and closely follow the Houston Rockets, Houston Texans, Chelsea FC, Texas Longhorns, and McLaren F1. I also enjoy exploring sports-related apps and prediction platforms such as Real, FotMob, and Kalshi. I track games and stadium visits through Momento (@nae10yee) and occasionally post on Real (@aspergis)!`,
   },
   {
-    id: "misc/pokemon.md",
-    path: "/misc/pokemon.md",
-    title: "Competitive Pokémon Player",
-    short: "Peaked #2 in National Dex Ubers on Pokémon Showdown with 1900+ Elo",
-    body: `# Competitive Pokémon Player
+    id: "misc/trivia.md",
+    path: "/misc/trivia.md",
+    title: "Trivia Enthusiast",
+    short: "Trivia games, random facts, and unnecessary knowledge",
+    body: `# Trivia Enthusiast
+    
+I love trivia games and learning random facts about almost anything. My favorite categories are Harry Potter, geography, world flags, and sports trivia. I currently have a trivia rating of 33,593 in Trivial Pursuit, which I am quite proud of.`,
+  },
+  {
+    id: "misc/music.md",
+    path: "/misc/music.md",
+    title: "Right AirPod User",
+    short: "Rap, pop, indie, rock, and discovering new music",
+    body: `# Right AirPod User
+    
+I spend a lot of time listening to music and discovering new artists across rap, pop, indie, and pretty much everything else. My Spotify is usually a mix of current releases, old playlists, and random late-night discoveries.`,
+  },
+  {
+    id: "misc/movies.md",
+    path: "/misc/movies.md",
+    title: "Aspiring Cinephile",
+    short: "Movies, ratings, reviews, and late-night Letterboxd scrolling",
+    body: `# Aspiring Cinephile
 
-Peak rank #2 in National Dex Ubers on Pokémon Showdown with 1900+ Elo — one of the most complex unrestricted formats in competitive Pokémon, where team building and matchup knowledge matter as much as in-game execution.`,
-    renderType: "text",
-    pinned: true,
-    meta: { category: "misc", tags: ["gaming", "competitive"] },
+I enjoy watching all kinds of movies — from big-budget action films to slower character-driven dramas and psychological thrillers. I use Letterboxd (@aspergis) to track films, ratings, and the occasional overly serious review. My four favorite films you ask? Parasite, The Dark Knight, La La Land, and Cars 2.`,
   },
   {
-    id: "misc/github.md",
-    path: "/misc/github.md",
-    title: "GitHub",
-    short: "Source code and open-source work",
-    body: `All my open-source code lives here.\n\nRun \`open /misc/github.md\` to view on GitHub.`,
-    renderType: "text",
-    externalUrl: "https://github.com/nolanqyee",
-    meta: { category: "misc", tags: ["code"] },
-  },
-  {
-    id: "misc/linkedin.md",
-    path: "/misc/linkedin.md",
-    title: "LinkedIn",
-    short: "Professional profile",
-    body: `Connect with me on LinkedIn.\n\nRun \`open /misc/linkedin.md\` to open profile.`,
-    renderType: "text",
-    externalUrl: "https://linkedin.com/in/nolanqyee",
-    meta: { category: "misc", tags: ["professional"] },
+    id: "misc/basketball.md",
+    path: "/misc/basketball.md",
+    title: "Three-Point Specialist",
+    short: "Pickup games, intramural playoff runs, and questionable shot selection",
+    body: `# Three-Point Specialist
+    
+I’ve always loved playing basketball, whether it’s pickup runs at the gym, rec games with friends, or random late-night sessions that end way later than planned. Most of my favorite memories from college honestly come from basketball — especially the competitiveness, trash talk, and chaos that somehow comes with every game. I've been told my player comparison is Trey Murphy III.`,
   },
 ];
 
@@ -367,9 +279,8 @@ export default CONTENT;
 // ── Lookup helpers ────────────────────────────────────────
 
 export function getNodeByPath(path: string): ContentNode | undefined {
-  const normalized = path.endsWith("/") && path !== "/"
-    ? path.slice(0, -1)
-    : path;
+  const normalized =
+    path.endsWith("/") && path !== "/" ? path.slice(0, -1) : path;
   return CONTENT.find((n) => n.path === normalized);
 }
 
@@ -385,15 +296,10 @@ export function getChildNodes(dirPath: string): ContentNode[] {
   });
 }
 
-export function getPinnedByCategory(category: string): ContentNode[] {
-  return CONTENT.filter((n) => n.meta.category === category && n.pinned);
-}
-
 export const TOP_LEVEL_DIRS = [
   "experience",
   "projects",
   "education",
-  "research",
   "misc",
 ] as const;
 

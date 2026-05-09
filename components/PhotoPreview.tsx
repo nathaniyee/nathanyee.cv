@@ -59,27 +59,31 @@ export default function PhotoPreview({ onClose }: PhotoPreviewProps) {
         <button
           onClick={onClose}
           onMouseDown={(e) => e.stopPropagation()} // don't start drag on button click
-          className="w-3 h-3 rounded-full flex items-center justify-center hover:brightness-95 transition flex-shrink-0 group"
-          style={{ background: "#FF5F57", boxShadow: "0 0 0 0.5px #E0443E" }}
+          className="-m-2 p-2 rounded-full flex items-center justify-center flex-shrink-0 group"
           aria-label="Close preview"
         >
-          <svg className="w-[6px] h-[6px] opacity-0 group-hover:opacity-100 transition-opacity" viewBox="0 0 12 12" fill="none" stroke="#4D0000" strokeWidth="2" strokeLinecap="round">
-            <line x1="2" y1="2" x2="10" y2="10" /><line x1="10" y1="2" x2="2" y2="10" />
-          </svg>
+          <span
+            className="w-3 h-3 rounded-full flex items-center justify-center hover:brightness-95 transition"
+            style={{ background: "#FF5F57", boxShadow: "0 0 0 0.5px #E0443E" }}
+          >
+            <svg className="w-[6px] h-[6px] opacity-0 group-hover:opacity-100 transition-opacity" viewBox="0 0 12 12" fill="none" stroke="#4D0000" strokeWidth="2" strokeLinecap="round">
+              <line x1="2" y1="2" x2="10" y2="10" /><line x1="10" y1="2" x2="2" y2="10" />
+            </svg>
+          </span>
         </button>
 
         <span
           className="flex-1 text-center text-[12px] font-medium"
           style={{ color: "#3C3C3C", marginRight: "12px" /* optical balance with close btn */ }}
         >
-          drag this window around!
+          mog
         </span>
       </div>
 
       {/* ── Image ── */}
       <div style={{ background: "#1A1A1A" }}>
         <Image
-          src="/images/profile.jpg"
+          src="/images/profile.JPG"
           alt={siteConfig.name}
           width={280}
           height={280}

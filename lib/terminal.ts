@@ -1,4 +1,4 @@
-import CONTENT, { getNodeByPath, getChildNodes, TOP_LEVEL_DIRS } from "@/data/content";
+import CONTENT, { getNodeByPath, getChildNodes, TOP_LEVEL_DIRS, siteConfig } from "@/data/content";
 
 // ── Path utilities ────────────────────────────────────────
 
@@ -40,7 +40,6 @@ function isDir(path: string): boolean {
 export type CommandResult =
   | { kind: "text"; text: string }
   | { kind: "markdown"; body: string }
-  | { kind: "visual"; body: string; visualProps: unknown }
   | { kind: "error"; text: string }
   | { kind: "clear" }
   | { kind: "open"; url: string; text: string }
@@ -161,13 +160,7 @@ function cmdCat(arg: string | undefined, cwd: string): CommandResult {
     };
   }
 
-  if (node.renderType === "markdown") {
-    return { kind: "markdown", body: node.body };
-  }
-  if (node.renderType === "visual") {
-    return { kind: "visual", body: node.body, visualProps: node.visualProps };
-  }
-  return { kind: "text", text: node.body };
+  return { kind: "markdown", body: node.body };
 }
 
 function cmdOpen(arg: string | undefined, cwd: string): CommandResult {
@@ -206,12 +199,6 @@ function cmdCd(arg: string | undefined, cwd: string): CommandResult {
 }
 
 function cmdWhoami(): CommandResult {
-  const bio = CONTENT.find((n) => n.id === "bio.md");
-  return {
-    kind: "text",
-    text: bio
-      ? `${bio.title}\n${bio.short}\n\nType \`cat /bio.md\` to read more.`
-      : "Unknown user. Update /bio.md to fix this.",
-  };
+  return { kind: "text", text: siteConfig.terminalUser };
 }
 
