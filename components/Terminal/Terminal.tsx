@@ -23,7 +23,7 @@ const WELCOME_CMD = "cat /welcome.md";
 const LINE_DELAY_MS = 22;
 const SINGLE_LINE_CHUNK_SIZE = 1;
 
-type StreamKind = "text" | "markdown" | "visual";
+type StreamKind = "text" | "markdown";
 
 interface TerminalProps {
     externalCatQueue?: string | null;
@@ -78,7 +78,7 @@ export default function Terminal({
     }, []);
 
     const streamOutput = useCallback(
-        (kind: StreamKind, content: string, visualProps?: unknown) => {
+        (kind: StreamKind, content: string) => {
             stopStreaming();
 
             const separator = kind === "text" ? "\n" : "<br>";
@@ -93,10 +93,6 @@ export default function Terminal({
             const makeEntry = (value: string): OutputEntry => {
                 if (kind === "text") {
                     return { type: "text", text: value };
-                }
-
-                if (kind === "visual") {
-                    return { type: "visual", html: value, visualProps };
                 }
 
                 return { type: "markdown", html: value };
@@ -193,21 +189,6 @@ export default function Terminal({
                     pushEntry({
                         type: "markdown",
                         html: terminalMarkdown(result.body),
-                    });
-                    break;
-                case "visual":
-                    if (isCat) {
-                        streamOutput(
-                            "visual",
-                            terminalMarkdown(result.body),
-                            result.visualProps,
-                        );
-                        return;
-                    }
-                    pushEntry({
-                        type: "visual",
-                        html: terminalMarkdown(result.body),
-                        visualProps: result.visualProps,
                     });
                     break;
                 case "open":

@@ -12,8 +12,7 @@ export type OutputEntry =
   | { type: "input"; text: string }
   | { type: "text"; text: string }
   | { type: "error"; text: string }
-  | { type: "markdown"; html: string }
-  | { type: "visual"; html: string; visualProps: unknown };
+  | { type: "markdown"; html: string };
 
 function TextWithLinks({ text }: { text: string }) {
   const parts = text.split(/(https?:\/\/[^\s]+)/g);
@@ -64,21 +63,6 @@ export default function OutputLine({ entry }: OutputLineProps) {
     );
   }
 
-  if (entry.type === "visual") {
-    return (
-      <div className="space-y-1.5 pl-0.5 mt-1">
-        <div
-          className="leading-normal [&_strong]:font-semibold [&_br]:block [&_br]:content-[''] [&_br]:mt-0"
-          style={{ color: T.dim }}
-          dangerouslySetInnerHTML={{ __html: entry.html }}
-        />
-        <div className="border rounded px-2 py-1.5 text-[11px] italic"
-          style={{ borderColor: "#334155", color: T.dim }}>
-          [visual card — Phase 3]
-        </div>
-      </div>
-    );
-  }
 
   return (
     <p className="whitespace-pre-wrap leading-normal pl-0.5 mt-1" style={{ color: T.dim }}>
